@@ -1,0 +1,19 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/redis/string?cacheKey={cacheKey}",
+      "DownstreamScheme": "http",
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "UpstreamPathTemplate": "/{cacheKey}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.0.74",
+          "Port": 8310
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+  }
+}
