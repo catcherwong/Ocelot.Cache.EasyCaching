@@ -19,6 +19,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="../../LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EasyCaching.Core" Version="0.6.0" />
     <PackageReference Include="Ocelot" Version="13.5.2" />
   </ItemGroup>
