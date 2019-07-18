@@ -1,5 +1,7 @@
 # Ocelot.Cache.EasyCaching
 
+[![nuget](https://img.shields.io/nuget/v/Ocelot.Cache.EasyCaching.svg)](https://www.nuget.org/packages/Ocelot.Cache.EasyCaching/) | [![GitHub license](https://img.shields.io/github/license/catcherwong/Ocelot.Cache.EasyCaching.svg)](https://github.com/catcherwong/Ocelot.Cache.EasyCaching/blob/master/LICENSE)
+
 This package adds [EasyCaching](https://github.com/dotnetcore/EasyCaching) support to Ocelot.
 
 ## How to install
