@@ -1,16 +1,8 @@
 ﻿namespace Ocelot.Cache.EasyCaching.UnitTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Threading.Tasks;
     using Configuration;
     using Configuration.Builder;
     using global::EasyCaching.Core;
-    using global::EasyCaching.InMemory;
     using Logging;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +11,13 @@
     using Moq;
     using Ocelot.Middleware;
     using Shouldly;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
     using TestStack.BDDfy;
     using Xunit;
 

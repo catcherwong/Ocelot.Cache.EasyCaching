@@ -1,11 +1,11 @@
-﻿namespace Ocelot.Cache.EasyCaching
+﻿namespace Ocelot.DependencyInjection
 {
-    using Configuration;
-    using Configuration.File;
-    using DependencyInjection;
-    using global::EasyCaching.Core;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.DependencyInjection.Extensions;
+    using Ocelot.Cache;
+    using Ocelot.Cache.EasyCaching;
+    using Ocelot.Configuration;
+    using Ocelot.Configuration.File;
     using System;
 
     public static class OcelotBuilderExtensions

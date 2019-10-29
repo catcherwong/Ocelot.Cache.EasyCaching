@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ocelot.Cache.EasyCaching.UnitTests
+﻿namespace Ocelot.Cache.EasyCaching.UnitTests
 {
     using global::EasyCaching.Core;
-    using global::EasyCaching.InMemory;
+    using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Options;
     using Moq;
     using Ocelot.Cache.EasyCaching;

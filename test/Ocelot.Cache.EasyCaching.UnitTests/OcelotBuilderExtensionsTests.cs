@@ -2,10 +2,6 @@
 {
     using Cache;
     using DependencyInjection;
-    using global::EasyCaching.Core;
-    using global::EasyCaching.InMemory;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Hosting.Internal;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Shouldly;
@@ -26,7 +22,6 @@
         {
             _configRoot = new ConfigurationRoot(new List<IConfigurationProvider>());
             _services = new ServiceCollection();
-            _services.AddSingleton<IHostingEnvironment, HostingEnvironment>();
             _services.AddSingleton(_configRoot);
         }
 
