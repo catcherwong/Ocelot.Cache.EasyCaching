@@ -14,7 +14,7 @@
     <RepositoryUrl>https://github.com/catcherwong/Ocelot.Cache.EasyCaching</RepositoryUrl>
     <ProjectUrl>https://github.com/catcherwong/Ocelot.Cache.EasyCaching</ProjectUrl>    
     <PackageReleaseNotes>  
-      Suport .net core 3.0          
+      Support .NET Core 3.0          
     </PackageReleaseNotes>
   </PropertyGroup>
 
