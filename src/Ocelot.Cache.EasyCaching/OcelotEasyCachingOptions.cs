@@ -16,6 +16,11 @@
         public string ProviderName { get; set; }
 
         /// <summary>
+        /// Specify the hybrid provider name when <see cref="EnableHybrid"/> is true
+        /// </summary>
+        public string HybridName { get; set; }
+
+        /// <summary>
         /// Settings of EasyCaching 
         /// </summary>
         public Action<EasyCachingOptions> Settings { get; set; }

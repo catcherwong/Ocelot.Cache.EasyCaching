@@ -13,7 +13,7 @@
         public OcelotEasyCachingCache(
             IOptions<OcelotEasyCachingOptions> optionsAccs, 
             IEasyCachingProviderFactory providerFactory, 
-            IHybridCachingProvider hybridProvider = null)
+            IHybridProviderFactory hybridFactory = null)
         {
             _options = optionsAccs.Value;
 
@@ -23,7 +23,7 @@
             }
             else
             {
-                _hybridProvider = hybridProvider;
+                _hybridProvider = hybridFactory.GetHybridCachingProvider(_options.HybridName);
             }            
         }
 

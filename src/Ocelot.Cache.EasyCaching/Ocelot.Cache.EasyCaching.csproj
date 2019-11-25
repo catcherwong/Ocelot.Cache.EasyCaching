@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <Owners>Catcher Wong</Owners>
     <Authors>Catcher Wong</Authors>    
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Description>          
       Providers Ocelot extensions to use EasyCaching
     </Description>    
@@ -14,7 +14,7 @@
     <RepositoryUrl>https://github.com/catcherwong/Ocelot.Cache.EasyCaching</RepositoryUrl>
     <ProjectUrl>https://github.com/catcherwong/Ocelot.Cache.EasyCaching</ProjectUrl>    
     <PackageReleaseNotes>  
-      Support .NET Core 3.0          
+      Support named hybrid provider.
     </PackageReleaseNotes>
   </PropertyGroup>
 
