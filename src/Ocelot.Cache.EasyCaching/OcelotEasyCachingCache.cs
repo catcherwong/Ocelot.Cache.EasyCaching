@@ -78,7 +78,7 @@
             }
             else
             {
-                var res = _hybridProvider.Get<T>(region);
+                var res = _hybridProvider.Get<T>(cacheKey);
                 return res.Value;
             }          
         }
