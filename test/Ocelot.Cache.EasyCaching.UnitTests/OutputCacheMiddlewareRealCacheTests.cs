@@ -25,8 +25,8 @@
     {
         private readonly IOcelotCache<CachedResponse> _ocelotCache;
         private readonly OutputCacheMiddleware _middleware;
-        private readonly DownstreamContext _downstreamContext;
-        private OcelotRequestDelegate _next;
+        private readonly HttpContext _httpContext;
+        private RequestDelegate _next;
         private Mock<IOcelotLoggerFactory> _loggerFactory;
         private Mock<IOcelotLogger> _logger;
         private Mock<IOptions<OcelotEasyCachingOptions>> _mockOptions;
@@ -34,6 +34,7 @@
 
         public OutputCacheMiddlewareRealCacheTests()
         {
+            _httpContext = new DefaultHttpContext();
             _loggerFactory = new Mock<IOcelotLoggerFactory>();
             _logger = new Mock<IOcelotLogger>();
             _loggerFactory.Setup(x => x.CreateLogger<OutputCacheMiddleware>()).Returns(_logger.Object);
@@ -52,8 +53,7 @@
             var factory = serviceProvider.GetService<IEasyCachingProviderFactory>();
 
             _ocelotCache = new OcelotEasyCachingCache<CachedResponse>(_mockOptions.Object, factory, null);
-            _downstreamContext = new DownstreamContext(new DefaultHttpContext());
-            _downstreamContext.DownstreamRequest = new Request.Middleware.DownstreamRequest(new HttpRequestMessage(HttpMethod.Get, "https://some.url/blah?abcd=123"));
+            _httpContext.Items.UpsertDownstreamRequest(new Ocelot.Request.Middleware.DownstreamRequest(new HttpRequestMessage(HttpMethod.Get, "https://some.url/blah?abcd=123")));
             _next = context => Task.CompletedTask;
             _middleware = new OutputCacheMiddleware(_next, _loggerFactory.Object, _ocelotCache, _cacheKeyGenerator);
         }
@@ -66,7 +66,7 @@
                 Headers = { ContentType = new MediaTypeHeaderValue("application/json") }
             };
 
-            var response = new DownstreamResponse(content, HttpStatusCode.OK, new List<KeyValuePair<string, IEnumerable<string>>>(), "");
+            var response = new DownstreamResponse(content, HttpStatusCode.OK, new List<KeyValuePair<string, IEnumerable<string>>>(), "fooreason");
 
             this.Given(x => x.GivenResponseIsNotCached(response))
                 .And(x => x.GivenTheDownstreamRouteIs())
@@ -77,7 +77,7 @@
 
         private void WhenICallTheMiddleware()
         {
-            _middleware.Invoke(_downstreamContext).GetAwaiter().GetResult();
+            _middleware.Invoke(_httpContext).GetAwaiter().GetResult();
         }
 
         private void ThenTheContentTypeHeaderIsCached()
@@ -90,18 +90,18 @@
 
         private void GivenResponseIsNotCached(DownstreamResponse response)
         {
-            _downstreamContext.DownstreamResponse = response;
+            _httpContext.Items.UpsertDownstreamResponse(response);
         }
 
         private void GivenTheDownstreamRouteIs()
         {
-            var reRoute = new DownstreamReRouteBuilder()
+            var route = new DownstreamRouteBuilder()
                 .WithIsCached(true)
                 .WithCacheOptions(new CacheOptions(100, "kanken"))
                 .WithUpstreamHttpMethod(new List<string> { "Get" })
                 .Build();
 
-            _downstreamContext.DownstreamReRoute = reRoute;
+            _httpContext.Items.UpsertDownstreamRoute(route);
         }
     }
 }
