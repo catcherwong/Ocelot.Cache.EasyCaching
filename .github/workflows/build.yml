@@ -24,4 +24,4 @@ jobs:
         dotnet build --configuration Release --source https://api.nuget.org/v3/index.json Ocelot.Cache.EasyCaching.sln
     - name: Test with dotnet
       run: |
-        dotnet test tests/Ocelot.Cache.EasyCaching.UnitTests/Ocelot.Cache.EasyCaching.UnitTests.csproj  --no-restore
+        dotnet test test/Ocelot.Cache.EasyCaching.UnitTests/Ocelot.Cache.EasyCaching.UnitTests.csproj  --no-restore
